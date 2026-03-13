@@ -13,7 +13,7 @@ export default function Hero() {
 
       <div className='relative z-10 text-center px-6 max-w-4xl mx-auto'>
         <p className='text-[var(--gold)] text-xs tracking-[0.3em] uppercase mb-6'>
-          HOI AN · VIETNAM
+          CENTRAL VIETNAM
         </p>
         <h1 className='font-display text-5xl md:text-7xl lg:text-8xl leading-tight text-[var(--off-white)] mb-6'>
           The French Wines<br />

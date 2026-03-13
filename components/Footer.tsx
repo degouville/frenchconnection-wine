@@ -55,7 +55,7 @@ export default function Footer() {
         <div>
           <p className='text-[var(--gold)] text-xs tracking-[0.25em] uppercase mb-5'>Contact Us</p>
           <div className='space-y-3 text-sm text-[var(--ink-soft)]'>
-            <p>Đường Phan Khôi, Khối Thịnh Mỹ<br />Hội An, Quảng Nam 51316<br />Vietnam</p>
+            <p>Đường Phan Khôi, Khối Thịnh Mỹ<br />Central Vietnam</p>
             <a href='mailto:contact@frenchconnection.wine' className='block hover:text-[var(--gold)] transition-colors'>
               contact@frenchconnection.wine
             </a>

@@ -15,7 +15,7 @@ export default function QuoteStrip() {
           Every bottle we ship is one we would pour at our own table first. That is the only standard that matters.
         </blockquote>
         <p className='text-[var(--gold)] text-xs tracking-[0.3em] uppercase'>
-          — French Connection Wines · Hoi An, Vietnam
+          — French Connection Wines · Central Vietnam
         </p>
       </div>
     </section>

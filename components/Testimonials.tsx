@@ -2,7 +2,7 @@ const testimonials = [
   {
     quote: "Finally, wines I actually recognize. I've been ordering from FCW for months and the quality is consistently excellent — nothing like what you find in regular stores here.",
     author: 'Sarah T.',
-    location: 'Hoi An',
+    location: 'Central Vietnam',
   },
   {
     quote: "We added the Chateau Fontanche to our restaurant wine list. Our customers ask about it every week. The quality-to-price ratio is outstanding.",

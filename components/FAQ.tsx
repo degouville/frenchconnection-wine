@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 const faqs = [
   {
-    question: 'Do you deliver outside Hoi An?',
+    question: 'Do you deliver outside Central Vietnam?',
     answer: 'Yes — we deliver across Vietnam. Most orders reach you within 2–3 business days.',
   },
   {

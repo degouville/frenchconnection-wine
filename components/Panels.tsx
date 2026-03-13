@@ -23,7 +23,7 @@ export default function Panels() {
             You shouldn't have to choose between overpriced restaurant wine and whatever's available at the supermarket. That gap — between what wine lovers in France drink at home and what's accessible in Vietnam — is exactly why French Connection Wines exists.
           </p>
           <p className='text-[var(--off-white)]/80 leading-relaxed max-w-md'>
-            Based in Hoi An, we work directly with estates in the South of France to bring curated, cellar-worthy bottles to your table. No middlemen. No compromises. Just the kind of wine that makes a dinner memorable.
+            Based in Central Vietnam, we work directly with estates in the South of France to bring curated, cellar-worthy bottles to your table. No middlemen. No compromises. Just the kind of wine that makes a dinner memorable.
           </p>
           <a
             href='#'
