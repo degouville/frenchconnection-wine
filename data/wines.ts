@@ -31,7 +31,7 @@ export const wines: Wine[] = [
     price: 350000,
     category: 'whites',
     badge: { label: 'IGP OC', style: 'gold' },
-    image: '/images/bottles/gilles-cantons/bistro-blanc.png',
+    image: '/images/bottles/gilles-cantons/bistro-blanc.jpg',
   },
   {
     id: 'camas-sauvignon-blanc',
@@ -162,7 +162,7 @@ export const wines: Wine[] = [
     price: 500000,
     category: 'reds',
     badge: { label: 'IGP OC', style: 'red' },
-    image: '/images/bottles/gilles-cantons/fontanche-pinot-noir.png',
+    image: '/images/bottles/gilles-cantons/fontanche-pinot-noir.webp',
   },
   {
     id: 'chateau-fontanche-red',
