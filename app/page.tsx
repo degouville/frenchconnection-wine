@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import Nav from "../components/Nav";
+import SplashScreen from "../components/SplashScreen";
 import SocialProofBar from "../components/SocialProofBar";
 import WinesSection from "../components/WinesSection";
 import QuoteStrip from "../components/QuoteStrip";
@@ -62,6 +63,7 @@ const featureBottles = [
 export default function Home() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const [splashDone, setSplashDone] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -147,6 +149,7 @@ export default function Home() {
 
   return (
     <>
+      {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
       <Nav />
       <div ref={wrapperRef} id="smooth-wrapper">
         <div ref={contentRef} id="smooth-content">
