@@ -1,9 +1,12 @@
+'use client'
+
+import { useLanguage } from '../lib/i18n/LanguageContext'
+import translations from '../lib/i18n/translations'
+
 export default function SocialProofBar() {
-  const items = [
-    "18 Curated French Wines",
-    "Direct from 3 Estates",
-    "Delivered Across Vietnam",
-  ];
+  const { lang } = useLanguage()
+  const t = translations[lang]
+  const items = t.socialProof.items
 
   return (
     <div className="bg-[var(--ink-deep,#0a0a0a)] border-y border-[var(--gold)]/20 py-4 px-6">
@@ -22,5 +25,5 @@ export default function SocialProofBar() {
         ))}
       </div>
     </div>
-  );
+  )
 }

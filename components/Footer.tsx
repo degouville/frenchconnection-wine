@@ -1,6 +1,13 @@
-import Image from "next/image";
+'use client'
+
+import Image from 'next/image'
+import { useLanguage } from '../lib/i18n/LanguageContext'
+import translations from '../lib/i18n/translations'
 
 export default function Footer() {
+  const { lang } = useLanguage()
+  const t = translations[lang]
+
   return (
     <footer className="bg-[var(--ink)] border-t border-[var(--gold)]/10 py-16 px-6">
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
@@ -19,15 +26,14 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-[var(--ink-soft)] text-sm leading-relaxed max-w-xs">
-            Our philosophy is to achieve balance across all components of the
-            wine — and to make no compromise in that pursuit.
+            {t.footer.tagline}
           </p>
         </div>
 
         {/* Producer logos */}
         <div>
           <p className="text-[var(--gold)] text-xs tracking-[0.25em] uppercase mb-5">
-            Our Producers
+            {t.footer.producers}
           </p>
           <div className="flex flex-col gap-4">
             <Image
@@ -57,13 +63,13 @@ export default function Footer() {
         {/* Contact */}
         <div>
           <p className="text-[var(--gold)] text-xs tracking-[0.25em] uppercase mb-5">
-            Contact Us
+            {t.footer.contact}
           </p>
           <div className="space-y-3 text-sm text-[var(--ink-soft)]">
             <p>
               Đường Phan Khôi, Khối Thịnh Mỹ
               <br />
-              Central Vietnam
+              {lang === 'vi' ? 'Miền Trung Việt Nam' : 'Central Vietnam'}
             </p>
             <a
               href="mailto:contact@frenchconnection.wine"
@@ -83,13 +89,12 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-[var(--gold)]/10 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-[var(--ink-soft)] text-xs">
-          © {new Date().getFullYear()} French Connection Wines. All Rights
-          Reserved.
+          © {new Date().getFullYear()} French Connection Wines. {t.footer.rights}
         </p>
         <p className="text-[var(--ink-soft)] text-xs">
-          All prices in VND, subject to 10% VAT.
+          {t.footer.prices}
         </p>
       </div>
     </footer>
-  );
+  )
 }

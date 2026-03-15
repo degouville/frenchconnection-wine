@@ -1,14 +1,22 @@
+'use client'
+
+import { useLanguage } from '../lib/i18n/LanguageContext'
+import translations from '../lib/i18n/translations'
+
 export default function QuoteStrip() {
+  const { lang } = useLanguage()
+  const t = translations[lang]
+
   return (
     <section className="relative py-24 px-6 overflow-hidden">
-      {/* Background image — img-parallax-wrap for GSAP parallax on alt pages */}
+      {/* Background imageimg-parallax-wrap for GSAP parallax on alt pages */}
       <div
         className="img-parallax-wrap"
         style={{
           backgroundImage:
-            "url(/images/lifestyle/hands-holding-red-grapes.webp)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+            'url(/images/lifestyle/hands-holding-red-grapes.webp)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       />
       <div className="absolute inset-0 bg-[var(--ink)]/75" />
@@ -17,13 +25,12 @@ export default function QuoteStrip() {
           &ldquo;
         </p>
         <blockquote className="font-display text-2xl md:text-3xl italic text-[var(--off-white)] leading-relaxed mb-6">
-          Every bottle we ship is one we would pour at our own table first. That
-          is the only standard that matters.
+          {t.quote.body}
         </blockquote>
         <p className="text-[var(--gold)] text-xs tracking-[0.3em] uppercase">
-          — French Connection Wines · Central Vietnam
+          {t.quote.attribution}
         </p>
       </div>
     </section>
-  );
+  )
 }

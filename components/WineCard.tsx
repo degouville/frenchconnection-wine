@@ -1,13 +1,20 @@
-import Image from "next/image";
-import type { Wine } from "../data/wines";
+'use client'
+
+import Image from 'next/image'
+import type { Wine } from '../data/wines'
+import { useLanguage } from '../lib/i18n/LanguageContext'
+import translations from '../lib/i18n/translations'
 
 const badgeColors = {
-  gold: "bg-[var(--gold)] text-[var(--ink)]",
-  red: "bg-[var(--bordeaux)] text-[var(--off-white)]",
-  blush: "bg-[var(--blush)] text-[var(--ink)]",
-};
+  gold: 'bg-[var(--gold)] text-[var(--ink)]',
+  red: 'bg-[var(--bordeaux)] text-[var(--off-white)]',
+  blush: 'bg-[var(--blush)] text-[var(--ink)]',
+}
 
 export default function WineCard({ wine }: { wine: Wine }) {
+  const { lang } = useLanguage()
+  const t = translations[lang]
+
   return (
     <div className="group relative flex flex-col bg-[var(--ink-mid)]/30 border border-[var(--gold)]/10 hover:border-[var(--gold)]/40 transition-all duration-300 overflow-hidden">
       {/* Badge */}
@@ -41,16 +48,16 @@ export default function WineCard({ wine }: { wine: Wine }) {
         <p className="text-[var(--ink-soft)] text-xs mt-0.5">{wine.varietal}</p>
         <div className="mt-auto pt-3 flex items-center justify-between">
           <span className="font-display text-[var(--gold)] text-xl">
-            ₫{wine.price.toLocaleString("fr-FR")}
+            ₫{wine.price.toLocaleString('fr-FR')}
           </span>
           <a
             href="#order"
             className="text-xs tracking-widest uppercase text-[var(--off-white)]/60 hover:text-[var(--gold)] transition-colors border-b border-transparent hover:border-[var(--gold)]"
           >
-            Order
+            {t.wineCard.order}
           </a>
         </div>
       </div>
     </div>
-  );
+  )
 }

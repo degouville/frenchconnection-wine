@@ -87,7 +87,7 @@ export const wines: Wine[] = [
     id: "la-butiniere-magnum",
     name: "La Butinière Magnum",
     varietal: "100% Oaked Chardonnay",
-    appellation: "AOP Limoux — Magnum",
+    appellation: "AOP LimouxMagnum",
     price: 1850000,
     category: "whites",
     badge: { label: "Magnum", style: "gold" },
