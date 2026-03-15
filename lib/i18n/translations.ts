@@ -144,6 +144,20 @@ const translations = {
       contact: 'Contact Us',
       rights: 'All Rights Reserved.',
       prices: 'All prices in VND, subject to 10% VAT.',
+      madeBy: 'Site by Mathieu de Gouville',
+      modal: {
+        eyebrow: 'WEBSITE REALIZATION',
+        title: 'Crafted with Intention',
+        testimonial:
+          '"I wanted this site to feel like the wines themselves — nothing superfluous, everything deliberate. The design draws from the terroir of the South of France: unhurried, confident, honest. Built to get out of the way and let the bottles speak."',
+        author: 'Mathieu de Gouville',
+        role: 'Developer & Designer',
+        stackLabel: 'Built with',
+        stack: 'Next.js 16 · React 19 · TailwindCSS 4 · TypeScript',
+        aiLabel: 'AI-assisted development',
+        ai: 'Claude Code by Anthropic — for rapid iteration without sacrificing craft.',
+        close: 'Close',
+      },
     },
   },
 
@@ -292,6 +306,20 @@ const translations = {
       contact: 'Liên Hệ',
       rights: 'Bảo lưu mọi quyền.',
       prices: 'Giá tính bằng VND, chưa bao gồm 10% VAT.',
+      madeBy: 'Website bởi Mathieu de Gouville',
+      modal: {
+        eyebrow: 'THỰC HIỆN WEBSITE',
+        title: 'Được Tạo Ra Với Chủ Tâm',
+        testimonial:
+          '"Tôi muốn trang web này cảm giác như chính những chai rượu — không thừa thãi, mọi thứ đều có chủ đích. Thiết kế lấy cảm hứng từ terroir miền Nam nước Pháp: thong thả, tự tin, chân thực. Xây dựng để lùi lại và để những chai rượu tự lên tiếng."',
+        author: 'Mathieu de Gouville',
+        role: 'Lập Trình Viên & Nhà Thiết Kế',
+        stackLabel: 'Xây dựng với',
+        stack: 'Next.js 16 · React 19 · TailwindCSS 4 · TypeScript',
+        aiLabel: 'Hỗ trợ bởi AI',
+        ai: 'Claude Code của Anthropic — để lặp nhanh mà không đánh mất chất lượng.',
+        close: 'Đóng',
+      },
     },
   },
 } as const
