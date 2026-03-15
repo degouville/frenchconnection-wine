@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://frenchconnection.wine/sitemap.xml

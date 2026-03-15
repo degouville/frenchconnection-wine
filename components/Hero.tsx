@@ -12,7 +12,7 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
         backgroundImage:
-          'url(/images/categories/../lifestyle/vineyard-rows-aerial.webp)',
+          'url(/images/lifestyle/vineyard-rows-aerial.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
