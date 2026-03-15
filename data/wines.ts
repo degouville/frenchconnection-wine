@@ -31,7 +31,7 @@ export const wines: Wine[] = [
     price: 310000,
     category: 'whites',
     badge: { label: 'IGP OC', style: 'gold' },
-    image: '/images/bottles/gilles-cantons/bistro-blanc.jpg',
+    image: '/images/bottles/gilles-cantons/bistro-blanc.png',
   },
   {
     id: 'camas-sauvignon-blanc',
