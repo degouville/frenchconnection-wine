@@ -24,6 +24,15 @@ body {
 
 /* ── Keyframes ─────────────────────────────── */
 
+@keyframes wiggle {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(-6deg); }
+  40%  { transform: rotate(6deg); }
+  60%  { transform: rotate(-4deg); }
+  80%  { transform: rotate(3deg); }
+  100% { transform: rotate(0deg); }
+}
+
 @keyframes clipDiagonal {
   from {
     clip-path: polygon(30% 0, 30% 0, 30% 100%, 30% 100%);

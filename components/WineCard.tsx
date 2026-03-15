@@ -26,7 +26,7 @@ export default function WineCard({ wine }: { wine: Wine }) {
 
       {/* Bottle image */}
       <div className="relative h-64 flex items-end justify-center pt-6 pb-4 overflow-hidden bg-gradient-to-b from-[var(--ink)]/20 to-transparent">
-        <div className="relative h-56 w-full transition-transform duration-500 group-hover:-translate-y-2">
+        <div className="relative h-56 w-full transition-transform duration-500 group-hover:-translate-y-2 group-hover:[animation:wiggle_0.5s_ease-in-out]">
           <Image
             src={wine.image}
             alt={wine.name}
