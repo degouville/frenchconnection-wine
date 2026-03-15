@@ -4,12 +4,19 @@ import Image from 'next/image'
 import { useLanguage } from '../lib/i18n/LanguageContext'
 import translations from '../lib/i18n/translations'
 
+const producers = [
+  { type: 'logo', src: '/images/logos/logo-anne-de-joyeuse.png', alt: 'Cave Anne de Joyeuse' },
+  { type: 'logo', src: '/images/logos/logo-gilles-cantons.png', alt: 'Gilles Cantons' },
+  { type: 'logo', src: '/images/logos/logo-chateau-pennautier.png', alt: 'Chateau de Pennautier' },
+  { type: 'text', name: 'Forge Céleste' },
+] as const
+
 export default function Footer() {
   const { lang } = useLanguage()
   const t = translations[lang]
 
   return (
-    <footer className="bg-[var(--ink)] border-t border-[var(--gold)]/10 py-16 px-6">
+    <footer className="bg-[var(--ink)] border-t border-[var(--gold)]/10 py-12 px-6">
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
         {/* Brand */}
         <div>
@@ -30,33 +37,37 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Producer logos */}
+        {/* Producer logos — row on mobile, 2×2 grid on desktop */}
         <div>
-          <p className="text-[var(--gold)] text-xs tracking-[0.25em] uppercase mb-5">
+          <p className="text-[var(--gold)] text-xs tracking-[0.25em] uppercase mb-4">
             {t.footer.producers}
           </p>
-          <div className="flex flex-col gap-4">
-            <Image
-              src="/images/logos/logo-anne-de-joyeuse.png"
-              alt="Cave Anne de Joyeuse"
-              width={120}
-              height={40}
-              className="object-contain object-left brightness-75 hover:brightness-100 transition-all"
-            />
-            <Image
-              src="/images/logos/logo-gilles-cantons.png"
-              alt="Gilles Cantons"
-              width={120}
-              height={40}
-              className="object-contain object-left brightness-75 hover:brightness-100 transition-all"
-            />
-            <Image
-              src="/images/logos/logo-chateau-pennautier.png"
-              alt="Chateau de Pennautier"
-              width={120}
-              height={40}
-              className="object-contain object-left brightness-75 hover:brightness-100 transition-all"
-            />
+          <div className="flex flex-row gap-3 overflow-x-auto md:grid md:grid-cols-2 md:gap-3 md:overflow-visible">
+            {producers.map((p) =>
+              p.type === 'logo' ? (
+                <div
+                  key={p.alt}
+                  className="shrink-0 flex items-center justify-center p-4 bg-[var(--off-white)]/5 hover:bg-[var(--off-white)]/10 transition-colors"
+                >
+                  <Image
+                    src={p.src}
+                    alt={p.alt}
+                    width={90}
+                    height={36}
+                    className="object-contain brightness-75 hover:brightness-100 transition-all"
+                  />
+                </div>
+              ) : (
+                <div
+                  key={p.name}
+                  className="shrink-0 flex items-center justify-center p-4 bg-[var(--off-white)]/5 hover:bg-[var(--off-white)]/10 transition-colors"
+                >
+                  <span className="font-display text-[var(--ink-soft)] text-sm tracking-wide hover:text-[var(--off-white)] transition-colors cursor-default whitespace-nowrap">
+                    {p.name}
+                  </span>
+                </div>
+              ),
+            )}
           </div>
         </div>
 
@@ -87,7 +98,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-[var(--gold)]/10 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div className="max-w-7xl mx-auto mt-10 pt-8 border-t border-[var(--gold)]/10 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-[var(--ink-soft)] text-xs">
           © {new Date().getFullYear()} French Connection Wines. {t.footer.rights}
         </p>
