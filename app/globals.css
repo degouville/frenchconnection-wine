@@ -5,15 +5,15 @@
 }
 
 :root {
-  --gold: #B8965A;
-  --gold-dk: #8C6E38;
-  --ink: #1C1008;
-  --ink-mid: #4A3728;
-  --ink-soft: #7A6555;
-  --off-white: #F9F6F1;
-  --light: #F2EDE4;
-  --bordeaux: #6B1A1A;
-  --blush: #C9897E;
+  --gold: #b8965a;
+  --gold-dk: #8c6e38;
+  --ink: #1c1008;
+  --ink-mid: #4a3728;
+  --ink-soft: #7a6555;
+  --off-white: #f9f6f1;
+  --light: #f2ede4;
+  --bordeaux: #6b1a1a;
+  --blush: #c9897e;
 }
 
 body {
@@ -25,28 +25,51 @@ body {
 /* ── Keyframes ─────────────────────────────── */
 
 @keyframes clipDiagonal {
-  from { clip-path: polygon(30% 0, 30% 0, 30% 100%, 30% 100%); }
-  to   { clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%); }
+  from {
+    clip-path: polygon(30% 0, 30% 0, 30% 100%, 30% 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+  }
 }
 
 @keyframes clipCircleExpand {
-  from { clip-path: circle(0% at 50% 50%); }
-  to   { clip-path: circle(75% at 50% 50%); }
+  from {
+    clip-path: circle(0% at 50% 50%);
+  }
+  to {
+    clip-path: circle(75% at 50% 50%);
+  }
 }
 
 @keyframes clipInsetReveal {
-  from { clip-path: inset(40% 40% 40% 40%); }
-  to   { clip-path: inset(0% 0% 0% 0%); }
+  from {
+    clip-path: inset(40% 40% 40% 40%);
+  }
+  to {
+    clip-path: inset(0% 0% 0% 0%);
+  }
 }
 
 @keyframes bottleFloat {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-12px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── Scroll-triggered reveal — GSAP-only ──────
