@@ -41,14 +41,17 @@ export default function TerroirSection() {
         <div className='grid md:grid-cols-3 gap-8 md:gap-6'>
           {steps.map((step) => (
             <div key={step.number} className='flex flex-col'>
+              {/* overflow-hidden clips the oversized img-parallax-wrap on alt pages */}
               <div className='relative h-72 overflow-hidden mb-6'>
-                <Image
-                  src={step.image}
-                  alt={step.alt}
-                  fill
-                  sizes='(max-width: 768px) 100vw, 33vw'
-                  className='object-cover'
-                />
+                <div className='img-parallax-wrap'>
+                  <Image
+                    src={step.image}
+                    alt={step.alt}
+                    fill
+                    sizes='(max-width: 768px) 100vw, 33vw'
+                    className='object-cover'
+                  />
+                </div>
                 <div className='absolute inset-0 bg-gradient-to-t from-[var(--ink)]/50 to-transparent' />
               </div>
               <p className='font-display text-[var(--gold)] text-5xl mb-3 leading-none'>{step.number}</p>

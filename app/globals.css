@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@utility font-display {
+  font-family: var(--font-forum), serif;
+}
+
 :root {
   --gold: #B8965A;
   --gold-dk: #8C6E38;
@@ -15,5 +19,83 @@
 body {
   background-color: var(--ink);
   color: var(--off-white);
-  font-family: var(--font-lato), sans-serif;
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* ── Keyframes ─────────────────────────────── */
+
+@keyframes clipDiagonal {
+  from { clip-path: polygon(30% 0, 30% 0, 30% 100%, 30% 100%); }
+  to   { clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%); }
+}
+
+@keyframes clipCircleExpand {
+  from { clip-path: circle(0% at 50% 50%); }
+  to   { clip-path: circle(75% at 50% 50%); }
+}
+
+@keyframes clipInsetReveal {
+  from { clip-path: inset(40% 40% 40% 40%); }
+  to   { clip-path: inset(0% 0% 0% 0%); }
+}
+
+@keyframes bottleFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Scroll-triggered reveal — GSAP-only ──────
+   NEVER set opacity:0 or transform here.
+   GSAP's from({opacity:0}) reads the element's
+   natural state as the animation target. If CSS
+   already sets opacity:0, the tween goes 0→0
+   and the element stays invisible forever.       */
+.reveal {
+  will-change: transform, opacity;
+}
+
+/* ── Scrollbar hide utility ────────────────── */
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── ScrollSmoother wrapper ────────────────── */
+
+#smooth-wrapper {
+  overflow: hidden;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#smooth-content {
+  overflow: visible;
+  width: 100%;
+}
+
+/* ── img-parallax-wrap default (no GSAP) ─────
+   On pages without ScrollSmoother, the wrapper
+   fills its container normally. GSAP overrides
+   top/height inline when it initialises.        */
+.img-parallax-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
 }

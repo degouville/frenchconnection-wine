@@ -1,17 +1,18 @@
 export default function Panels() {
   return (
     <div className='grid md:grid-cols-2'>
+
       {/* Our Story */}
-      <section
-        id='story'
-        className='relative min-h-[520px] flex items-end overflow-hidden'
-        style={{
-          backgroundImage: 'url(/images/lifestyle/vineyard-landscape-estate.webp)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        {/* Base dark layer + gradient for strong contrast */}
+      <section id='story' className='relative min-h-[520px] flex items-end overflow-hidden'>
+        {/* Background image — img-parallax-wrap for GSAP parallax on alt pages */}
+        <div
+          className='img-parallax-wrap'
+          style={{
+            backgroundImage: 'url(/images/lifestyle/vineyard-landscape-estate.webp)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
         <div className='absolute inset-0 bg-[var(--ink)]/55' />
         <div className='absolute inset-0 bg-gradient-to-t from-[var(--ink)] via-[var(--ink)]/70 to-transparent' />
         <div className='relative z-10 p-10 md:p-14'>
@@ -20,7 +21,7 @@ export default function Panels() {
             Why We Started This
           </h2>
           <p className='text-[var(--off-white)]/80 leading-relaxed mb-4 max-w-md'>
-            You shouldn't have to choose between overpriced restaurant wine and whatever's available at the supermarket. That gap — between what wine lovers in France drink at home and what's accessible in Vietnam — is exactly why French Connection Wines exists.
+            You shouldn&apos;t have to choose between overpriced restaurant wine and whatever&apos;s available at the supermarket. That gap — between what wine lovers in France drink at home and what&apos;s accessible in Vietnam — is exactly why French Connection Wines exists.
           </p>
           <p className='text-[var(--off-white)]/80 leading-relaxed max-w-md'>
             Based in Central Vietnam, we work directly with estates in the South of France to bring curated, cellar-worthy bottles to your table. No middlemen. No compromises. Just the kind of wine that makes a dinner memorable.
@@ -35,15 +36,15 @@ export default function Panels() {
       </section>
 
       {/* Order & Delivery */}
-      <section
-        id='order'
-        className='relative min-h-[520px] flex items-end overflow-hidden'
-        style={{
-          backgroundImage: 'url(/images/categories/Grand_Cru_Forge_Celeste.webp)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'top',
-        }}
-      >
+      <section id='order' className='relative min-h-[520px] flex items-end overflow-hidden'>
+        <div
+          className='img-parallax-wrap'
+          style={{
+            backgroundImage: 'url(/images/lifestyle/red-wine-pouring-decanter.webp)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'top',
+          }}
+        />
         <div className='absolute inset-0 bg-gradient-to-t from-[var(--ink)] via-[var(--ink)]/60 to-transparent' />
         <div className='relative z-10 p-10 md:p-14'>
           <p className='text-[var(--gold)] text-xs tracking-[0.3em] uppercase mb-3'>Get in touch</p>
@@ -78,6 +79,7 @@ export default function Panels() {
           </p>
         </div>
       </section>
+
     </div>
   )
 }
