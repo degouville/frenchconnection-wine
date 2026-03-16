@@ -19,6 +19,7 @@ export default function WinesSection() {
   const [visible, setVisible] = useState(false)
   const [hoveredWine, setHoveredWine] = useState<Wine | null>(null)
   const [shuffledAll, setShuffledAll] = useState<Wine[]>(wines)
+  const [expanded, setExpanded] = useState(false)
 
   const mouseRef = useRef({ x: 0, y: 0 })
   const cardCenterRef = useRef({ x: 0, y: 0 })
@@ -40,10 +41,8 @@ export default function WinesSection() {
     { id: 'sparkling', label: t.wines.tabs.sparkling },
   ]
 
-  // Shuffle on mount (after hydration to avoid mismatch)
   useEffect(() => { setShuffledAll(shuffle(wines)) }, [])
 
-  // Intersection reveal
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true) },
@@ -53,14 +52,11 @@ export default function WinesSection() {
     return () => observer.disconnect()
   }, [])
 
-  // Mouse-follow zoomed bottle
   useEffect(() => {
     if (!hoveredWine) return
-
     const handleMove = (e: MouseEvent) => {
       mouseRef.current = { x: e.clientX, y: e.clientY }
     }
-
     const animate = () => {
       const { x, y } = mouseRef.current
       const cx = cardCenterRef.current.x
@@ -72,7 +68,6 @@ export default function WinesSection() {
       }
       rafRef.current = requestAnimationFrame(animate)
     }
-
     window.addEventListener('mousemove', handleMove)
     rafRef.current = requestAnimationFrame(animate)
     return () => {
@@ -81,7 +76,6 @@ export default function WinesSection() {
     }
   }, [hoveredWine])
 
-  // Capture card positions before a tab change
   const capturePositions = () => {
     const cards = gridRef.current?.querySelectorAll('[data-wine-id]') ?? []
     const map: Record<string, DOMRect> = {}
@@ -91,22 +85,17 @@ export default function WinesSection() {
     savedPositions.current = map
   }
 
-  // GSAP FLIP animation after render
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false
       return
     }
-
     const cards = gridRef.current?.querySelectorAll('[data-wine-id]') ?? []
-
     cards.forEach((el, i) => {
       const id = (el as HTMLElement).dataset.wineId!
       const old = savedPositions.current[id]
       const now = el.getBoundingClientRect()
-
       if (old) {
-        // Card existed beforeFLIP it to new position
         const dx = old.left - now.left
         const dy = old.top - now.top
         gsap.fromTo(
@@ -115,7 +104,6 @@ export default function WinesSection() {
           { x: 0, y: 0, opacity: 1, duration: 0.55, ease: 'power3.out', delay: i * 0.025 },
         )
       } else {
-        // New card entering the grid
         gsap.fromTo(
           el,
           { opacity: 0, y: 40, scale: 0.9 },
@@ -123,16 +111,20 @@ export default function WinesSection() {
         )
       }
     })
-  }, [active, shuffledAll])
+  }, [active, shuffledAll, expanded])
 
   const handleTabChange = (tab: Tab) => {
     capturePositions()
     if (tab === 'all') setShuffledAll(shuffle(wines))
     setActive(tab)
+    setExpanded(false)
   }
 
   const filtered =
     active === 'all' ? shuffledAll : wines.filter((w) => w.category === active)
+
+  const showFade = active === 'all' && !expanded && filtered.length > 8
+  const displayed = showFade ? filtered.slice(0, 8) : filtered
 
   const countLabel =
     lang === 'vi'
@@ -149,7 +141,6 @@ export default function WinesSection() {
         className={`py-24 px-6 bg-(--ink) transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       >
         <div className="max-w-7xl mx-auto">
-          {/* Heading */}
           <div className="text-center mb-12">
             <p className="text-(--gold) text-xs tracking-[0.3em] uppercase mb-3">
               {t.wines.eyebrow}
@@ -160,7 +151,6 @@ export default function WinesSection() {
             <div className="w-16 h-px bg-(--gold) mx-auto" />
           </div>
 
-          {/* Filter tabs */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
             {tabs.map((tab) => (
               <button
@@ -177,31 +167,52 @@ export default function WinesSection() {
             ))}
           </div>
 
-          {/* Wine grid */}
-          <div
-            ref={gridRef}
-            className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
-          >
-            {filtered.map((wine) => (
+          {/* Grid + fade */}
+          <div className="relative">
+            <div
+              ref={gridRef}
+              className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
+            >
+              {displayed.map((wine) => (
+                <div
+                  key={wine.id}
+                  data-wine-id={wine.id}
+                  onMouseEnter={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect()
+                    cardCenterRef.current = {
+                      x: rect.left + rect.width / 2,
+                      y: rect.top + rect.height / 2,
+                    }
+                    setHoveredWine(wine)
+                  }}
+                  onMouseLeave={() => setHoveredWine(null)}
+                >
+                  <WineCard wine={wine} />
+                </div>
+              ))}
+            </div>
+
+            {/* Row 2 fades out bottom-to-top into bg */}
+            {showFade && (
               <div
-                key={wine.id}
-                data-wine-id={wine.id}
-                onMouseEnter={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect()
-                  cardCenterRef.current = {
-                    x: rect.left + rect.width / 2,
-                    y: rect.top + rect.height / 2,
-                  }
-                  setHoveredWine(wine)
-                }}
-                onMouseLeave={() => setHoveredWine(null)}
-              >
-                <WineCard wine={wine} />
-              </div>
-            ))}
+                className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
+                style={{ background: 'linear-gradient(to bottom, transparent, var(--ink))' }}
+              />
+            )}
           </div>
 
-          {/* Count */}
+          {/* View all CTA */}
+          {showFade && (
+            <div className="text-center mt-10">
+              <button
+                onClick={() => setExpanded(true)}
+                className="px-8 py-3 border border-(--gold)/40 text-(--off-white)/70 text-xs tracking-widest uppercase hover:border-(--gold) hover:text-(--gold) transition-all duration-200"
+              >
+                {lang === 'vi' ? 'Xem tất cả' : 'View all wines'}
+              </button>
+            </div>
+          )}
+
           <p className="text-center text-(--ink-soft) text-xs tracking-widest uppercase mt-8">
             {countLabel}
           </p>
