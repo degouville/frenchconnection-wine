@@ -9,12 +9,12 @@ export default function QuoteStrip() {
 
   return (
     <section className="relative py-24 px-6 overflow-hidden min-h-[400px] flex items-center justify-center">
-      {/* Background imageimg-parallax-wrap for GSAP parallax on alt pages */}
+      {/* Background image with GSAP parallax support */}
       <div
         className="img-parallax-wrap"
         style={{
           backgroundImage:
-            'url(/images/lifestyle/hands-holding-red-grapes.webp)',
+            "url('/images/lifestyle/hands-holding-red-grapes.webp')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

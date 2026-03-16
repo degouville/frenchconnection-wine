@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react'
 import { useLanguage } from '../lib/i18n/LanguageContext'
 import translations from '../lib/i18n/translations'
 
-const VIDEO_ID = 'vet3KqhTn7g2'
+const VIDEO_ID = 'vet3KqhTn7g'
 
 export default function Hero() {
   const { lang } = useLanguage()
