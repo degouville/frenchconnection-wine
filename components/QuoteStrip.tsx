@@ -8,7 +8,7 @@ export default function QuoteStrip() {
   const t = translations[lang]
 
   return (
-    <section className="relative py-24 px-6 overflow-hidden">
+    <section className="relative py-24 px-6 overflow-hidden min-h-[400px] flex items-center justify-center">
       {/* Background imageimg-parallax-wrap for GSAP parallax on alt pages */}
       <div
         className="img-parallax-wrap"
