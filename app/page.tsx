@@ -244,7 +244,7 @@ export default function Home() {
                 onClick={() => setVideoModal(true)}
                 className="inline-flex items-center gap-3 text-black text-xs tracking-widest uppercase hover:opacity-70 transition-opacity duration-200 group"
               >
-                <span className="flex items-center justify-center w-14 h-14 rounded-full border-2 border-black bg-white/20 group-hover:scale-110 transition-transform duration-300">
+                <span className="flex items-center justify-center w-14 h-14 rounded-full border-2 border-black group-hover:scale-110 transition-transform duration-300">
                   <svg width="14" height="16" viewBox="0 0 12 14" fill="black">
                     <path d="M12 7L0 14V0L12 7Z" />
                   </svg>
