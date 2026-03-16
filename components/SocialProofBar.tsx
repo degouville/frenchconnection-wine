@@ -9,7 +9,7 @@ export default function SocialProofBar() {
   const items = t.socialProof.items
 
   return (
-    <div className="bg-[var(--ink-deep,#0a0a0a)] border-y border-[var(--gold)]/20 py-4 px-6">
+    <div className="bg-[var(--ink-deep,#0a0a0a)] border-b border-[var(--gold)]/20 py-4 px-6">
       <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-0">
         {items.map((item, i) => (
           <div key={item} className="flex items-center gap-3">
