@@ -42,6 +42,15 @@ body {
   }
 }
 
+@keyframes clipDiagonalMobile {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 @keyframes clipCircleExpand {
   from {
     clip-path: circle(0% at 50% 50%);
@@ -130,4 +139,36 @@ body {
   right: 0;
   width: 100%;
   height: 100%;
+}
+
+/* ── Hero clip-path animation ───────────────
+   Mobile: slide-in from right (no diagonal)
+   Desktop: diagonal reveal                      */
+.hero-clip {
+  clip-path: inset(0 100% 0 0);
+  animation: clipDiagonalMobile 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (min-width: 768px) {
+  .hero-clip {
+    clip-path: polygon(30% 0, 30% 0, 30% 100%, 30% 100%);
+    animation: clipDiagonal 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+/* ── Hero left panel: diagonal right edge reveal ─
+   Mobile: full width (no diagonal)
+   Desktop: parallelogram with inclined right edge  */
+/* Overlay is 100vw wide — percentages map directly to viewport width */
+@keyframes clipDiagonalLeft {
+  from {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 57% 0, 43% 100%, 0 100%);
+  }
+}
+
+.hero-bg-left {
+  animation: clipDiagonalLeft 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }

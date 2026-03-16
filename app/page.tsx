@@ -60,10 +60,13 @@ const featureBottles = [
   },
 ];
 
+const VIDEO_ID = "vet3KqhTn7g";
+
 export default function Home() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [splashDone, setSplashDone] = useState(false);
+  const [videoModal, setVideoModal] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -98,13 +101,14 @@ export default function Home() {
       // Positive yPercent = image drifts DOWN relative to container
       // Container moves UP with scroll → net: image moves up SLOWER = depth
       // 3 parallax forcescycle through them so adjacent images move at different speeds
-      const parallaxForces = [8, 18, 28];
+      const parallaxForces = [8, 12, 18];
       gsap.utils
         .toArray<HTMLElement>(".img-parallax-wrap")
         .forEach((wrap, i) => {
           const force = parallaxForces[i % 3];
-          // Expand wrapper so image has room to travel: needs at least force% extra on each side
-          const overflow = Math.ceil(force / 2) + 5;
+          // Correct overflow: yPercent moves wrapper by force×wrapperHeight, so top drifts by
+          // force×(100+2×overflow)/100. We need that ≤ overflow → overflow ≥ force×100/(100-2×force)
+          const overflow = Math.ceil((force * 100) / (100 - force * 2)) + 4;
           gsap.set(wrap, {
             top: `-${overflow}%`,
             height: `${100 + overflow * 2}%`,
@@ -154,58 +158,69 @@ export default function Home() {
       <div ref={wrapperRef} id="smooth-wrapper">
         <div ref={contentRef} id="smooth-content">
           {/* ── Split-Screen Hero ──────────────── */}
-          <section className="relative min-h-screen grid grid-cols-1 md:grid-cols-2">
+          <section className="relative min-h-screen grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+
+            {/* Full-section YouTube background */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&disablekb=1&rel=0&modestbranding=1&playsinline=1`}
+                allow="autoplay; encrypted-media"
+                className="absolute"
+                style={{ border: 0, width: "max(177.78vh, 177.78vw)", height: "max(100vh, 56.25vw)", top: "50%", left: "50%", transform: "translate(-50%, -50%) scale(1.33)" }}
+                title="Background video"
+              />
+            </div>
+
+            {/* Desktop diagonal overlay — full section width so clip-path % = vw % */}
+            <div className="hero-bg-left hidden md:block absolute inset-0 z-[1] bg-(--ink)/90 backdrop-blur-md" />
+
             {/* Left: Copy */}
-            <div className="flex flex-col justify-center px-8 md:px-16 py-32 md:py-0 bg-(--ink) z-10">
-              <p className="text-(--gold) text-xs tracking-[0.3em] uppercase mb-6">
-                CENTRAL VIETNAM
-              </p>
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-tight text-(--off-white) mb-6">
-                The French Wines
-                <br />
-                <span className="text-(--gold)">You Deserve</span>
-              </h1>
-              <p className="text-(--off-white)/70 text-lg leading-relaxed max-w-md mb-10">
-                Sourced directly from South of France estates. Curated,
-                cellar-quality wine, delivered to your door.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="#wines"
-                  className="px-8 py-3.5 bg-(--gold) text-(--ink) font-bold text-sm tracking-widest uppercase hover:bg-(--gold-dk) transition-colors"
+            <div className="relative flex flex-col justify-center px-8 md:px-16 py-32 md:py-0 z-10 bg-(--ink)/90 md:bg-transparent backdrop-blur-md md:backdrop-blur-none">
+              {/* Content */}
+              <div className="relative z-10">
+                <p className="text-(--gold) text-xs tracking-[0.3em] uppercase mb-6">
+                  CENTRAL VIETNAM
+                </p>
+                <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-tight text-(--off-white) mb-6">
+                  The French Wines
+                  <br />
+                  <span className="text-(--gold)">You Deserve</span>
+                </h1>
+                <p className="text-(--off-white)/70 text-lg leading-relaxed max-w-md mb-10">
+                  Sourced directly from South of France estates. Curated,
+                  cellar-quality wine, delivered to your door.
+                </p>
+                <div className="flex flex-wrap gap-4 mb-8">
+                  <a
+                    href="#wines"
+                    className="px-8 py-3.5 bg-(--gold) text-(--ink) font-bold text-sm tracking-widest uppercase hover:bg-(--gold-dk) transition-colors"
+                  >
+                    Browse Collection
+                  </a>
+                  <a
+                    href="https://zalo.me/84936480805"
+                    className="px-8 py-3.5 border border-(--off-white)/40 text-(--off-white) text-sm tracking-widest uppercase hover:border-(--gold) hover:text-(--gold) transition-colors"
+                  >
+                    Order on Zalo
+                  </a>
+                </div>
+                {/* Play video button */}
+                <button
+                  onClick={() => setVideoModal(true)}
+                  className="inline-flex items-center gap-3 text-(--off-white)/50 text-xs tracking-widest uppercase hover:text-(--gold) transition-colors duration-200 group"
                 >
-                  Browse Collection
-                </a>
-                <a
-                  href="https://zalo.me/84936480805"
-                  className="px-8 py-3.5 border border-(--off-white)/40 text-(--off-white) text-sm tracking-widest uppercase hover:border-(--gold) hover:text-(--gold) transition-colors"
-                >
-                  Order on Zalo
-                </a>
+                  <span className="flex items-center justify-center w-11 h-11 rounded-full border border-(--off-white)/30 group-hover:border-(--gold) group-hover:scale-110 transition-all duration-300">
+                    <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor">
+                      <path d="M12 7L0 14V0L12 7Z" />
+                    </svg>
+                  </span>
+                  Watch the story
+                </button>
               </div>
             </div>
 
-            {/* Right: Diagonal clip + parallax */}
-            <div className="relative min-h-[50vh] md:min-h-0 overflow-hidden">
-              <div
-                className="img-parallax-wrap absolute inset-x-0 w-full"
-                style={{ top: "-15%", height: "130%" }}
-              >
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage:
-                      "url(/images/lifestyle/vineyard-rows-aerial.webp)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    animation:
-                      "clipDiagonal 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards",
-                    clipPath: "polygon(30% 0, 30% 0, 30% 100%, 30% 100%)",
-                  }}
-                />
-              </div>
-              <div className="absolute inset-0 bg-(--ink)/20 z-10" />
-            </div>
+            {/* Right: pure video, no overlay */}
+            <div className="relative min-h-[50vh] md:min-h-0" />
 
             {/* Floating bottle */}
             <div
@@ -221,6 +236,36 @@ export default function Home() {
               />
             </div>
           </section>
+
+          {/* ── Video modal ──────────────────────── */}
+          {videoModal && (
+            <div
+              className="fixed inset-0 z-[200] flex items-center justify-center bg-black/85 backdrop-blur-sm"
+              onClick={() => setVideoModal(false)}
+            >
+              <button
+                onClick={() => setVideoModal(false)}
+                className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
+              >
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+              <div
+                className="relative w-[90vw] max-w-5xl aspect-video"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`}
+                  allow="autoplay; encrypted-media; fullscreen"
+                  allowFullScreen
+                  className="w-full h-full"
+                  style={{ border: 0 }}
+                  title="The Story"
+                />
+              </div>
+            </div>
+          )}
 
           <SocialProofBar />
 
