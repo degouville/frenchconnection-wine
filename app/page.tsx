@@ -155,6 +155,36 @@ export default function Home() {
     <>
       {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
       <Nav />
+
+      {/* ── Video modal — outside smooth-wrapper to escape its stacking context ── */}
+      {videoModal && (
+        <div
+          className="fixed inset-0 z-[500] flex items-center justify-center bg-black/85 backdrop-blur-sm"
+          onClick={() => setVideoModal(false)}
+        >
+          <button
+            onClick={() => setVideoModal(false)}
+            className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+          <div
+            className="relative w-[90vw] max-w-5xl"
+            style={{ aspectRatio: '16/9' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`}
+              allow="autoplay; encrypted-media; fullscreen"
+              allowFullScreen
+              style={{ border: 0, width: '100%', height: '100%', display: 'block' }}
+              title="The Story"
+            />
+          </div>
+        </div>
+      )}
       <div ref={wrapperRef} id="smooth-wrapper">
         <div ref={contentRef} id="smooth-content">
           {/* ── Split-Screen Hero ──────────────── */}
@@ -172,10 +202,10 @@ export default function Home() {
             </div>
 
             {/* Desktop diagonal overlay — full section width so clip-path % = vw % */}
-            <div className="hero-bg-left hidden md:block absolute inset-0 z-[1] bg-(--ink)/90 backdrop-blur-md" />
+            <div className="hero-bg-left hidden md:block absolute inset-0 z-[1] bg-(--ink)/95 backdrop-blur-md" />
 
             {/* Left: Copy */}
-            <div className="relative flex flex-col justify-center px-8 md:px-16 py-32 md:py-0 z-10 bg-(--ink)/90 md:bg-transparent backdrop-blur-md md:backdrop-blur-none">
+            <div className="relative flex flex-col justify-center px-8 md:px-16 py-32 md:py-0 z-10 bg-(--ink)/95 md:bg-transparent backdrop-blur-md md:backdrop-blur-none">
               {/* Content */}
               <div className="relative z-10">
                 <p className="text-(--gold) text-xs tracking-[0.3em] uppercase mb-6">
@@ -204,23 +234,24 @@ export default function Home() {
                     Order on Zalo
                   </a>
                 </div>
-                {/* Play video button */}
-                <button
-                  onClick={() => setVideoModal(true)}
-                  className="inline-flex items-center gap-3 text-(--off-white)/50 text-xs tracking-widest uppercase hover:text-(--gold) transition-colors duration-200 group"
-                >
-                  <span className="flex items-center justify-center w-11 h-11 rounded-full border border-(--off-white)/30 group-hover:border-(--gold) group-hover:scale-110 transition-all duration-300">
-                    <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor">
-                      <path d="M12 7L0 14V0L12 7Z" />
-                    </svg>
-                  </span>
-                  Watch the story
-                </button>
+
               </div>
             </div>
 
-            {/* Right: pure video, no overlay */}
-            <div className="relative min-h-[50vh] md:min-h-0" />
+            {/* Right: video with play button at bottom */}
+            <div className="relative min-h-[50vh] md:min-h-0 flex items-end justify-start z-10 pb-10 pl-10">
+              <button
+                onClick={() => setVideoModal(true)}
+                className="inline-flex items-center gap-3 text-black text-xs tracking-widest uppercase hover:opacity-70 transition-opacity duration-200 group"
+              >
+                <span className="flex items-center justify-center w-14 h-14 rounded-full border-2 border-black bg-white/20 group-hover:scale-110 transition-transform duration-300">
+                  <svg width="14" height="16" viewBox="0 0 12 14" fill="black">
+                    <path d="M12 7L0 14V0L12 7Z" />
+                  </svg>
+                </span>
+                Watch the story
+              </button>
+            </div>
 
             {/* Floating bottle */}
             <div
@@ -237,37 +268,11 @@ export default function Home() {
             </div>
           </section>
 
-          {/* ── Video modal ──────────────────────── */}
-          {videoModal && (
-            <div
-              className="fixed inset-0 z-[200] flex items-center justify-center bg-black/85 backdrop-blur-sm"
-              onClick={() => setVideoModal(false)}
-            >
-              <button
-                onClick={() => setVideoModal(false)}
-                className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
-              >
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M18 6L6 18M6 6l12 12" />
-                </svg>
-              </button>
-              <div
-                className="relative w-[90vw] max-w-5xl aspect-video"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`}
-                  allow="autoplay; encrypted-media; fullscreen"
-                  allowFullScreen
-                  className="w-full h-full"
-                  style={{ border: 0 }}
-                  title="The Story"
-                />
-              </div>
-            </div>
-          )}
 
-          <SocialProofBar />
+
+          <div className="-mt-px">
+            <SocialProofBar />
+          </div>
 
           {/* ── Editorial Wine Feature ─────────── */}
           <section className="py-24 px-6 bg-(--ink)">
