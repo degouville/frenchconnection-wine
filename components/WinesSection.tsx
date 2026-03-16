@@ -208,7 +208,7 @@ export default function WinesSection() {
                 onClick={() => setExpanded(true)}
                 className="px-8 py-3 border border-(--gold)/40 text-(--off-white)/70 text-xs tracking-widest uppercase hover:border-(--gold) hover:text-(--gold) transition-all duration-200"
               >
-                {lang === 'vi' ? 'Xem tất cả' : 'View all wines'}
+                {t.wines.viewAll}
               </button>
             </div>
           )}

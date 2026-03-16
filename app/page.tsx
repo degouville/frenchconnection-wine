@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "../lib/i18n/LanguageContext";
+import translations from "../lib/i18n/translations";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -67,6 +69,8 @@ export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null);
   const [splashDone, setSplashDone] = useState(false);
   const [videoModal, setVideoModal] = useState(false);
+  const { lang } = useLanguage();
+  const t = translations[lang];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -301,15 +305,13 @@ export default function Home() {
               {/* Right: Copy + bottles */}
               <div className="reveal">
                 <p className="text-(--gold) text-xs tracking-[0.3em] uppercase mb-3">
-                  THE COLLECTION
+                  {t.collection.eyebrow}
                 </p>
                 <h2 className="font-display text-4xl md:text-5xl text-(--off-white) mb-6">
-                  Wines With Character
+                  {t.collection.heading}
                 </h2>
                 <p className="text-(--off-white)/70 leading-relaxed mb-10 max-w-md">
-                  From the sun-drenched vineyards of Languedoc to the
-                  prestigious terroirs of Saint-Emilion. Every bottle tells the
-                  story of its origin.
+                  {t.collection.body}
                 </p>
                 <div className="flex gap-6">
                   {featureBottles.map((b) => (
@@ -349,10 +351,10 @@ export default function Home() {
             <div className="absolute inset-0 bg-(--ink)/65" />
             <div className="relative z-10 text-center px-6 max-w-3xl reveal">
               <p className="font-display text-3xl md:text-4xl italic text-(--off-white) leading-relaxed">
-                &ldquo;Wine is sunlight, held together by water.&rdquo;
+                &ldquo;{t.editorial.quote}&rdquo;
               </p>
               <p className="text-(--gold) text-xs tracking-[0.3em] uppercase mt-6">
-                &mdash; Galileo Galilei
+                &mdash; {t.editorial.attribution}
               </p>
             </div>
           </section>
@@ -361,10 +363,10 @@ export default function Home() {
           <section className="py-24 bg-(--ink)">
             <div className="max-w-7xl mx-auto px-6 mb-12 reveal">
               <p className="text-(--gold) text-xs tracking-[0.3em] uppercase mb-3">
-                GALLERY
+                {t.gallery.eyebrow}
               </p>
               <h2 className="font-display text-4xl md:text-5xl text-(--off-white)">
-                Life in the Vineyard
+                {t.gallery.heading}
               </h2>
             </div>
             <div

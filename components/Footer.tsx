@@ -83,7 +83,7 @@ export default function Footer() {
               <p>
                 Đường Phan Khôi, Khối Thịnh Mỹ
                 <br />
-                {lang === 'vi' ? 'Miền Trung Việt Nam' : 'Central Vietnam'}
+                {t.footer.location}
               </p>
               <a
                 href="mailto:contact@frenchconnection.wine"

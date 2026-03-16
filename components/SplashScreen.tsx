@@ -1,10 +1,15 @@
 'use client'
 
+import { useLanguage } from '../lib/i18n/LanguageContext'
+import translations from '../lib/i18n/translations'
+
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { gsap } from 'gsap'
 
 export default function SplashScreen({ onComplete }: { onComplete: () => void }) {
+  const { lang } = useLanguage()
+  const t = translations[lang]
   const topPanelRef = useRef<HTMLDivElement>(null)
   const bottomPanelRef = useRef<HTMLDivElement>(null)
   const logoWrapRef = useRef<HTMLDivElement>(null)
@@ -113,7 +118,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
           ref={taglineRef}
           className="mt-4 text-[var(--gold)] text-[1.8vmin] tracking-[0.35em] uppercase font-sans"
         >
-          South of France · Vietnam
+          {t.splash.tagline}
         </p>
       </div>
     </>

@@ -14,6 +14,7 @@ const translations = {
       browseCollection: 'Browse the Collection',
       orderOnZalo: 'Order on Zalo',
       scroll: 'Scroll',
+      watchStory: 'Watch the story',
     },
     socialProof: {
       items: [
@@ -21,6 +22,22 @@ const translations = {
         'Direct from 3 Estates',
         'Delivered Across Vietnam',
       ],
+    },
+    collection: {
+      eyebrow: 'THE COLLECTION',
+      heading: 'Wines With Character',
+      body: 'From the sun-drenched vineyards of Languedoc to the prestigious terroirs of Saint-Emilion. Every bottle tells the story of its origin.',
+    },
+    editorial: {
+      quote: 'Wine is sunlight, held together by water.',
+      attribution: 'Galileo Galilei',
+    },
+    gallery: {
+      eyebrow: 'GALLERY',
+      heading: 'Life in the Vineyard',
+    },
+    splash: {
+      tagline: 'South of France · Vietnam',
     },
     wines: {
       eyebrow: 'the wines',
@@ -34,6 +51,7 @@ const translations = {
       },
       countSingular: (n: number) => `${n} wine shown`,
       countPlural: (n: number) => `${n} wines shown`,
+      viewAll: 'View all wines',
     },
     wineCard: {
       order: 'Order',
@@ -138,6 +156,7 @@ const translations = {
       ],
     },
     footer: {
+      location: 'Central Vietnam',
       tagline:
         'Our philosophy is to achieve balance across all components of the wineand to make no compromise in that pursuit.',
       producers: 'Our Producers',
@@ -176,6 +195,7 @@ const translations = {
       browseCollection: 'Khám Phá Bộ Sưu Tập',
       orderOnZalo: 'Đặt Hàng Qua Zalo',
       scroll: 'Cuộn',
+      watchStory: 'Xem câu chuyện',
     },
     socialProof: {
       items: [
@@ -183,6 +203,22 @@ const translations = {
         'Nhập Trực Tiếp Từ 3 Trang Trại',
         'Giao Hàng Toàn Quốc',
       ],
+    },
+    collection: {
+      eyebrow: 'BỘ SƯU TẬP',
+      heading: 'Rượu Vang Đậm Chất',
+      body: 'Từ những vườn nho tắm nắng vùng Languedoc đến các terroir danh tiếng của Saint-Emilion. Mỗi chai rượu kể câu chuyện về nguồn gốc của nó.',
+    },
+    editorial: {
+      quote: 'Rượu vang là ánh nắng mặt trời, được giữ lại bởi nước.',
+      attribution: 'Galileo Galilei',
+    },
+    gallery: {
+      eyebrow: 'HÌNH ẢNH',
+      heading: 'Cuộc Sống Trong Vườn Nho',
+    },
+    splash: {
+      tagline: 'Miền Nam Nước Pháp · Việt Nam',
     },
     wines: {
       eyebrow: 'bộ sưu tập',
@@ -196,6 +232,7 @@ const translations = {
       },
       countSingular: (n: number) => `${n} loại rượu`,
       countPlural: (n: number) => `${n} loại rượu`,
+      viewAll: 'Xem tất cả',
     },
     wineCard: {
       order: 'Đặt Hàng',
@@ -300,6 +337,7 @@ const translations = {
       ],
     },
     footer: {
+      location: 'Miền Trung Việt Nam',
       tagline:
         'Triết lý của chúng tôi là đạt được sự cân bằng trong tất cả các thành phần của rượuvà không bao giờ thỏa hiệp trong hành trình đó.',
       producers: 'Nhà Sản Xuất',
