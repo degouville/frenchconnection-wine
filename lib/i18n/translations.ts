@@ -156,14 +156,48 @@ const translations = {
       ],
     },
     footer: {
-      location: 'Central Vietnam',
+      location: 'Da Nang City, Vietnam',
       tagline:
         'Our philosophy is to achieve balance across all components of the wineand to make no compromise in that pursuit.',
       producers: 'Our Producers',
       contact: 'Contact Us',
+      meetTeam: 'Meet the team →',
       rights: 'All Rights Reserved.',
       prices: 'All prices in VND, subject to 10% VAT.',
       madeBy: 'Site by Mathieu de Gouville',
+      contactModal: {
+        eyebrow: 'OUR TEAM',
+        title: 'Get in Touch',
+        contactLine: 'Director Đỗ Hoàng Yến (VIE/ENG): 0327650090',
+        contactLine2: 'Customer Service Nguyễn Trà My (VIE/ENG): 0967663967',
+        close: 'Close',
+        team: [
+          {
+            name: 'Adrien Baumes',
+            role: 'DIRECTOR OF SALES / FOUNDER',
+            phone: '0 936 480 805',
+            email: 'a.baumes@gmail.com',
+          },
+          {
+            name: 'Yen Do',
+            role: 'DIRECTOR / CO-FOUNDER',
+            phone: '0 327 650 090',
+            email: 'frenchconnectionwine@gmail.com',
+          },
+          {
+            name: 'Cristian Fuentes',
+            role: 'SALES MANAGER',
+            phone: '0 399 588 836',
+            email: 'fcw.cristian@gmail.com',
+          },
+          {
+            name: 'My Nguyen',
+            role: 'CUSTOMER SERVICE',
+            phone: '0 967 663 967',
+            email: 'contact@frenchconnection.wine',
+          },
+        ],
+      },
       modal: {
         eyebrow: 'WEBSITE REALIZATION',
         title: 'Crafted with Intention',
@@ -337,14 +371,48 @@ const translations = {
       ],
     },
     footer: {
-      location: 'Miền Trung Việt Nam',
+      location: 'Thành phố Đà Nẵng, Việt Nam',
       tagline:
         'Triết lý của chúng tôi là đạt được sự cân bằng trong tất cả các thành phần của rượuvà không bao giờ thỏa hiệp trong hành trình đó.',
       producers: 'Nhà Sản Xuất',
       contact: 'Liên Hệ',
+      meetTeam: 'Gặp gỡ đội ngũ →',
       rights: 'Bảo lưu mọi quyền.',
       prices: 'Giá tính bằng VND, chưa bao gồm 10% VAT.',
       madeBy: 'Website bởi Mathieu de Gouville',
+      contactModal: {
+        eyebrow: 'ĐỘI NGŨ',
+        title: 'Liên Hệ Với Chúng Tôi',
+        contactLine: 'Giám đốc/Director Đỗ Hoàng Yến (VIE/ENG): 0327650090',
+        contactLine2: 'Chăm sóc khách hàng/Customer Service Nguyễn Trà My (VIE/ENG): 0967663967',
+        close: 'Đóng',
+        team: [
+          {
+            name: 'Adrien Baumes',
+            role: 'GIÁM ĐỐC KINH DOANH / SÁNG LẬP VIÊN',
+            phone: '0 936 480 805',
+            email: 'a.baumes@gmail.com',
+          },
+          {
+            name: 'Yen Do',
+            role: 'GIÁM ĐỐC / ĐỒNG SÁNG LẬP',
+            phone: '0 327 650 090',
+            email: 'frenchconnectionwine@gmail.com',
+          },
+          {
+            name: 'Cristian Fuentes',
+            role: 'QUẢN LÝ KINH DOANH',
+            phone: '0 399 588 836',
+            email: 'fcw.cristian@gmail.com',
+          },
+          {
+            name: 'My Nguyen',
+            role: 'CHĂM SÓC KHÁCH HÀNG',
+            phone: '0 967 663 967',
+            email: 'contact@frenchconnection.wine',
+          },
+        ],
+      },
       modal: {
         eyebrow: 'THỰC HIỆN WEBSITE',
         title: 'Được Tạo Ra Với Chủ Tâm',

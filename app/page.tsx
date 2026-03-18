@@ -163,21 +163,18 @@ export default function Home() {
       {/* ── Video modal — outside smooth-wrapper to escape its stacking context ── */}
       {videoModal && (
         <div
-          className="fixed inset-0 z-[500] flex items-center justify-center bg-black/85 backdrop-blur-sm"
-          onClick={() => setVideoModal(false)}
+          className="fixed inset-0 z-[500] flex items-center justify-center bg-black"
         >
           <button
             onClick={() => setVideoModal(false)}
-            className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
+            className="absolute top-6 right-6 z-10 text-white/60 hover:text-white transition-colors"
           >
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M18 6L6 18M6 6l12 12" />
             </svg>
           </button>
           <div
-            className="relative w-[90vw] max-w-5xl"
-            style={{ aspectRatio: '16/9' }}
-            onClick={(e) => e.stopPropagation()}
+            className="relative w-full h-full"
           >
             <iframe
               src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`}
