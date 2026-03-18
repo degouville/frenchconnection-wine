@@ -47,7 +47,7 @@ export default function Footer() {
             <p className="text-[var(--gold)] text-xs tracking-[0.25em] uppercase mb-4">
               {t.footer.producers}
             </p>
-            <div className="flex flex-row gap-3 overflow-x-auto md:grid md:grid-cols-2 md:gap-3 md:overflow-visible">
+            <div className="grid grid-cols-2 gap-2 md:gap-3">
               {producers.map((p) =>
                 p.type === 'logo' ? (
                   <div
@@ -107,9 +107,7 @@ export default function Footer() {
           <p className="text-[var(--ink-soft)] text-xs">
             © {new Date().getFullYear()} French Connection Wines. {t.footer.rights}
           </p>
-          <p className="text-[var(--ink-soft)] text-xs">
-            {t.footer.prices}
-          </p>
+
           <button
             onClick={() => setModalOpen(true)}
             className="text-[var(--ink-soft)] text-xs hover:text-[var(--gold)] transition-colors cursor-pointer underline underline-offset-2 decoration-[var(--gold)]/30 hover:decoration-[var(--gold)]"
