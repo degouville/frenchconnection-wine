@@ -85,7 +85,7 @@ export default function Footer() {
               <p>
                 Bến Trế 3, Phường Hội An Tây
                 <br />
-                {t.footer.location}
+                Ben Tre 3, Hoi An Tay Ward, {t.footer.location}
               </p>
 <a
                 href="https://zalo.me/84936480805"
